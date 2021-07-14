@@ -77,3 +77,11 @@
    .FizzBuzz:before {
        content: url(/img/fizzbuzz-icon.png);
    }
+
+   .btn-bee:hover {
+       color: #dbcd00;
+   }
+
+   .mb-footer {
+       margin-bottom: 4rem;
+   }
