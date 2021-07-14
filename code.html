@@ -196,7 +196,19 @@ function displayData(fizzBuzzData) {
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <strong>DisplayData(fizzBuzzData)</strong>
-                                    <p></p>
+                                    <p>The primary job of this function is to output a table filled with our fizz buzz values. First we get a handle on our doucment.
+                                        We grab our table body, because thats where we are going to show our output. And we get our template for easy formatting.
+                                        Its important to clear our table, so that it is blank when we add data. we do this with tableBody.innerHTML = "";
+                                    </p>
+                                    <p>
+                                        Our template consists of one row with 5 data cells. Since we know this for a fact, we will be hard coding the data display.
+                                        If we did not know that, I would dynamically add rows and tables in my loop.  The for loop iterates over the length of our data-set
+                                        and builds a new row each loop. We are building 5 cells at a time, so we are incrementing by 5 each time.
+                                    </p>
+                                    <p> tableRow is a constant, since it represents the row of our template.  Using importNode(templateRow.content, true) we are able to 
+                                        make a variable rowCols to hold all the data cells. Next we add a class to each td, and fill its textContent  with our data.
+                                        Finally we use tableBody.appendChild(tableRow) to add our row into the output table.
+                                    </p>
                                 </div>
                             </div>
                         </div>
