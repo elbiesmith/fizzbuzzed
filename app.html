@@ -63,12 +63,25 @@
                         </div>
                         <div class="row">
                             <h3 class="text-decaf border-bottom border-bee border-2">Instructions</h3>
-                            <p>Enter two numbers into the Number Fields and press the button. The <strong>FIRST</strong> number will
-                                represent our Fizz Value. The <strong>SECOND</strong> number will represent our Buzz Value. By Default, the 
+                            <p>Enter two numbers into the Number Fields and press the button. The <strong>FIRST</strong>
+                                number will
+                                represent our Fizz Value. The <strong>SECOND</strong> number will represent our Buzz
+                                Value. By Default, the
                                 values are set to 3 and 5 respectively.
                             </p>
+                            <p>
+                                Negative numbers are automatically excluded.
+                            </p>
                         </div>
-                        
+                        <div class="row">
+                            <h3 class="text-decaf border-bottom border-bee border-2">Advanced</h3>
+                            <p>By default, our range is the numbers 1 - 100. If you would like to set a custom range, enter the starting value
+                                and the ending value in the advanced section.  <strong>NOTE: </strong>If your start number is larger than your ending number, 
+                                the values will be swappped.
+                            </p>
+                            <p>Negative numbers are handled, and will be displayed using the advanced option.</p>
+                        </div>
+
                     </div>
 
                     <div class="col-7 border-start border-2 border-bee p-2 pt-3">
@@ -78,20 +91,47 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><img
                                                 src="/img/Fizz.png" alt=""></span></div>
-                                    <input type="number" class="form-control" id="fizzValue"
-                                        placeholder='* Fizz Value'>
+                                    <input type="number" class="form-control" id="fizzValue" placeholder='* Fizz Value'>
                                 </div>
                                 <button id="btnSubmit" type='submit' class='btn btn-dark btn-bee my-2'>Generate FizzBuzz
                                 </button>
                             </div>
                             <div class="col">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><img src="/img/buzz.png" alt=""></span></div>
-                                    <input type="number" class="form-control" id="buzzValue"
-                                        placeholder='* Buzz Value'>
+                                    <div class="input-group-prepend"><span class="input-group-text"><img
+                                                src="/img/buzz.png" alt=""></span></div>
+                                    <input type="number" class="form-control" id="buzzValue" placeholder='* Buzz Value'>
                                 </div>
-                                
+
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="accordion accordion-flush" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            <strong>Advanced: Choose your Range</strong>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse "
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="col">
+                                                <input type="number" class='form-control' id="customRangeStart"
+                                                    placeholder="* custom start point">
+                                            </div>
+                                            <div class="col">
+                                                <input type="number" class='form-control' id="customRangeEnd"
+                                                    placeholder="* custom end point">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                         <h5 class="mt-2 border-bottom border-bee border-2">FizzBuzzed Output</h5>
                         <table class="table table-striped table-warning text-start align-content-center mb-footer">
@@ -160,6 +200,16 @@
             }
         })
         document.getElementById("buzzValue").addEventListener('keypress', function (keyPressed) {
+            if (keyPressed.key === 'Enter') {
+                getNumbers();
+            }
+        })
+        document.getElementById("customRangeStart").addEventListener('keypress', function (keyPressed) {
+            if (keyPressed.key === 'Enter') {
+                getNumbers();
+            }
+        })
+        document.getElementById("customRangeEnd").addEventListener('keypress', function (keyPressed) {
             if (keyPressed.key === 'Enter') {
                 getNumbers();
             }

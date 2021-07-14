@@ -22,12 +22,24 @@ function getNumbers() {
     } else {
         generateFizzBuzzArray(fizzValue, buzzValue);
         displayData(fbData);
+        document.getElementById('customRangeEnd').value = ''
+        document.getElementById('customRangeStart').value = ''
+        document.getElementById('')
     }
 }
 
 function generateFizzBuzzArray(fizz, buzz) {
+    let startNumber = parseInt(document.getElementById('customRangeStart').value) || 1;
+    let endNumber = parseInt(document.getElementById('customRangeEnd').value) || 100;
 
-    for (let i = 1; i < 101; i++) {
+    //error handling for bigger starting number
+    if (startNumber > endNumber) {
+        let tempNumber = startNumber;
+        startNumber = endNumber;
+        endNumber = tempNumber;
+    }
+
+    for (let i = startNumber; i < endNumber + 1; i++) {
         if (i % fizz == 0 && i % buzz == 0) {
             fbData.push('FizzBuzz')
         } else if (i % fizz == 0) {
