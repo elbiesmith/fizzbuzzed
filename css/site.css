@@ -45,3 +45,37 @@
    .table-text-size {
        font-size: 12px;
    }
+
+   .sticky-footer {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+   }
+    td {
+        padding-left: 30px;
+    }
+   .Buzz {
+       color: transparent;
+   }
+
+   .Buzz::before {
+       content: url(/img/buzz-icon.png);
+   }
+
+   .Fizz {
+       color: transparent;
+   }
+   .Fizz:before {
+       content: url(/img/fizz-icon.png);
+       color: transparent;       
+   }
+
+   .FizzBuzz {
+       color: transparent;
+   }
+   .FizzBuzz:before {
+       content: url(/img/fizzbuzz-icon.png);
+   }
+
+   
