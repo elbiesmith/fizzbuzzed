@@ -23,14 +23,6 @@ function getNumbers() {
         generateFizzBuzzArray(fizzValue, buzzValue);
         displayData(fbData);
     }
-
-    // if (fizzValue < buzzValue) {
-    //     let tempFizz = buzzValue;
-    //     fizzValue = buzzValue;
-    //     buzzValue = tempFizz
-    // }
-
-
 }
 
 function generateFizzBuzzArray(fizz, buzz) {

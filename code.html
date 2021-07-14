@@ -49,9 +49,160 @@
 
     <main class="flex-shrink-0">
         <div class="container">
-            <h1 class="mt-5">Template with dark fixed navbar and sticky footer</h1>
-            <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and
-                CSS. A fixed navbar has been added with padding-top: 60px; on the main > .container.</p>
+
+            <div class="row">
+                <h4 class="border-bottom border-2 border-bee">The Code</h4>
+                <div class="col">
+                    <pre>
+                        <code class="language-javascript line-numbers">
+let fbData = [];
+
+function getNumbers() {
+    let fizzValue = parseInt(document.getElementById("fizzValue").value) || 3;
+    let buzzValue = parseInt(document.getElementById('buzzValue').value) || 5;
+    let errorState = false;
+    let errorMsg = "";
+    fbData = [];
+
+    // Verify that we have numbers
+    if (isNaN(fizzValue) || isNaN(buzzValue)) {
+        errorState = true;
+        errorMsg += 'Please use a number.&lt;hr /&gt;'
+    }
+
+    if (errorState) {
+        Swal.fire({ 
+            title: 'Something went wrong',
+            html: `${errorMsg}`,
+            confirmButtonText: 'OK'
+        })
+    } else {
+        generateFizzBuzzArray(fizzValue, buzzValue);
+        displayData(fbData);
+    }
+}
+
+function generateFizzBuzzArray(fizz, buzz) {
+
+    for (let i = 1; i &lt; 101; i++) { 
+        if (i % fizz == 0 && i % buzz == 0) { 
+            fbData.push('FizzBuzz') 
+        } else if (i % fizz == 0) {
+            fbData.push('Fizz') 
+        } else if (i % buzz == 0) { 
+            fbData.push('Buzz') 
+        } else { 
+            fbData.push(i) 
+        } 
+    } 
+} 
+    
+function displayData(fizzBuzzData) { 
+    //access table body 
+    let tableBody=document.getElementById("tableBody"); 
+    let templateRow=document.getElementById("fbTemplate"); 
+    tableBody.innerHTML="" ; 
+    
+    for (let i=0; i &lt; fizzBuzzData.length; i +=5) { 
+        const tableRow=document.importNode(templateRow.content, true); 
+        let rowCols=tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fizzBuzzData[i]); 
+        rowCols[0].textContent=fizzBuzzData[i];
+
+        rowCols[1].classList.add(fizzBuzzData[i + 1]); 
+        rowCols[1].textContent=fizzBuzzData[i + 1];
+
+        rowCols[2].classList.add(fizzBuzzData[i + 2]); 
+        rowCols[2].textContent=fizzBuzzData[i + 2];
+
+        rowCols[3].classList.add(fizzBuzzData[i + 3]); 
+        rowCols[3].textContent=fizzBuzzData[i + 3];
+
+        rowCols[4].classList.add(fizzBuzzData[i + 4]); 
+        rowCols[4].textContent=fizzBuzzData[i + 4];
+
+        tableBody.appendChild(tableRow); 
+    } 
+}
+
+
+                        </code>
+                    </pre>
+
+                </div>
+                <div class="col">
+                    <p>My implementation of Fizz Buzz uses one global variable (fbData) and 3 functions</p>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    getNumbers
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>getNumbers()</strong>
+                                    <p>
+                                        This function is called when someone presses the button from the app.html page
+                                        or presses enter inside one of the number input forms.</p>
+                                    <p> The values are taken from the input forms or set to a default value. I've
+                                        included some
+                                        error handling in the off chance someone enters something that is not a number.
+                                    </p>
+
+                                    <p>Finally we call generateFizzBuzzArray() and displayData()</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    generateFizzBuzzArray
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <strong>generateFizzBuzzArray(fizz, buzz)</strong>
+                                    <p>This function requires two
+                                        arguments, fizz and buzz. These will be used to determine which numbers are
+                                        changed to fizz and buzz.
+                                        I created a global variable called fbData to hold our array.
+                                    </p>
+                                    <p>We use a for loop to check if each number between 1 and 100 is divisible evenly
+                                        by our fizz and buzz varialbes.
+                                        If our current number is divisible evenly by both fizz and buzz, we push
+                                        FizzBuzz to our datta array. If its
+                                        only divisibly by fizz we push Fizz and if its divisibly by buzz we push Buzz.
+                                        If none of thats true, we just push
+                                        the current number.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    displayData
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>DisplayData(fizzBuzzData)</strong>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </main>
