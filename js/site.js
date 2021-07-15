@@ -55,11 +55,28 @@ function generateFizzBuzzArray(fizz, buzz) {
 
 
 function displayData(fizzBuzzData) {
-    //acces table body
+    
+    if (fizzBuzzData.length % 5 == 0) {
+        divisibleBy5(fizzBuzzData);
+    } else if (fizzBuzzData.length % 4 == 0) {
+        divisibleBy4(fizzBuzzData);
+    } else if (fizzBuzzData.length % 3 == 0) {
+        divisibleBy3(fizzBuzzData);
+    } else if (fizzBuzzData.length % 2 == 0) {
+        divisibleBy2(fizzBuzzData);
+    } else {
+        return;
+    }
+
+}
+
+
+function divisibleBy5(fizzBuzzData) {
     let tableBody = document.getElementById("tableBody");
     let templateRow = document.getElementById("fbTemplate");
 
     tableBody.innerHTML = "";
+
     for (let i = 0; i < fizzBuzzData.length; i += 5) {
         const tableRow = document.importNode(templateRow.content, true);
 
@@ -83,5 +100,82 @@ function displayData(fizzBuzzData) {
         tableBody.appendChild(tableRow);
 
     }
+}
 
+function divisibleBy4(fizzBuzzData) {
+        let tableBody = document.getElementById("tableBody");
+        let templateRow = document.getElementById("fbTemplate4");
+
+        tableBody.innerHTML = "";
+
+    for (let i = 0; i < fizzBuzzData.length; i += 4) {
+        const tableRow = document.importNode(templateRow.content, true);
+
+        let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fizzBuzzData[i]);
+        rowCols[0].textContent = fizzBuzzData[i];
+
+        rowCols[1].classList.add(fizzBuzzData[i + 1]);
+        rowCols[1].textContent = fizzBuzzData[i + 1];
+
+        rowCols[2].classList.add(fizzBuzzData[i + 2]);
+        rowCols[2].textContent = fizzBuzzData[i + 2];
+
+        rowCols[3].classList.add(fizzBuzzData[i + 3]);
+        rowCols[3].textContent = fizzBuzzData[i + 3];
+
+        tableBody.appendChild(tableRow);
+
+    }
+}
+
+function divisibleBy3(fizzBuzzData) {
+        let tableBody = document.getElementById("tableBody");
+        let templateRow = document.getElementById("fbTemplate3");
+
+        tableBody.innerHTML = "";
+
+    for (let i = 0; i < fizzBuzzData.length; i += 3) {
+        const tableRow = document.importNode(templateRow.content, true);
+
+        let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fizzBuzzData[i]);
+        rowCols[0].textContent = fizzBuzzData[i];
+
+        rowCols[1].classList.add(fizzBuzzData[i + 1]);
+        rowCols[1].textContent = fizzBuzzData[i + 1];
+
+        rowCols[2].classList.add(fizzBuzzData[i + 2]);
+        rowCols[2].textContent = fizzBuzzData[i + 2];
+
+
+        tableBody.appendChild(tableRow);
+
+    }
+}
+
+function divisibleBy2(fizzBuzzData) {
+        let tableBody = document.getElementById("tableBody2");
+        let templateRow = document.getElementById("fbTemplate");
+
+        tableBody.innerHTML = "";
+
+    for (let i = 0; i < fizzBuzzData.length; i += 2) {
+        const tableRow = document.importNode(templateRow.content, true);
+
+        let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fizzBuzzData[i]);
+        rowCols[0].textContent = fizzBuzzData[i];
+
+        rowCols[1].classList.add(fizzBuzzData[i + 1]);
+        rowCols[1].textContent = fizzBuzzData[i + 1];
+
+
+
+        tableBody.appendChild(tableRow);
+
+    }
 }
