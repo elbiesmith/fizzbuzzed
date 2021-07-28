@@ -1,8 +1,9 @@
    main>.container {
        padding: 60px 15px 0;
+       margin-bottom: 5rem;
    }
 
-   .text-match {
+    .text-match {
        color: #bfbfbf;
    }
 
